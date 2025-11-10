@@ -1,0 +1,11 @@
+.search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: min(520px, 50vw);
+}
+@media (max-width: 720px) {
+  .search { width: 100%; order: 3; margin-left: 0; }
+  .nav { order: 2; }
+}

@@ -1,0 +1,17 @@
+<div class="container" style="padding:1.25rem 0 2rem;">
+  <header style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.75rem;">
+    <h1>Favorites</h1>
+    <p class="muted">{{ recipes.favorites().length }} saved</p>
+  </header>
+
+  <div *ngIf="recipes.favorites().length; else empty">
+    <div class="grid">
+      <app-recipe-card *ngFor="let r of recipes.favorites()" [recipe]="r"></app-recipe-card>
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="card" style="padding:1rem;">
+      <p class="muted">No favorites yet. Browse recipes and tap the heart to save.</p>
+    </div>
+  </ng-template>
+</div>

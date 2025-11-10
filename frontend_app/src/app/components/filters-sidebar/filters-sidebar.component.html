@@ -1,0 +1,70 @@
+<aside class="card" aria-label="Filters sidebar">
+  <div class="panel">
+    <header>
+      <h2>Filters</h2>
+      <button class="btn" (click)="clearAll()" aria-label="Clear all filters">Clear</button>
+    </header>
+
+    <section>
+      <h3>Sort by</h3>
+      <div class="chips">
+        <button class="chip"
+                [class.active]="sortBy() === 'rating_desc'"
+                (click)="sortBy.set('rating_desc')"
+                attr.aria-pressed="{{ sortBy() === 'rating_desc' ? 'true' : 'false' }}">
+          Rating
+        </button>
+        <button class="chip"
+                [class.active]="sortBy() === 'time_asc'"
+                (click)="sortBy.set('time_asc')"
+                attr.aria-pressed="{{ sortBy() === 'time_asc' ? 'true' : 'false' }}">
+          Total Time
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Categories</h3>
+      <div class="chips">
+        <button *ngFor="let c of categories()" class="chip"
+                [class.active]="selectedCategories().includes(c)"
+                (click)="toggle(selectedCategories, c)"
+                attr.aria-pressed="{{ selectedCategories().includes(c) ? 'true' : 'false' }}">
+          {{ c }}
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Dietary</h3>
+      <div class="chips">
+        <button *ngFor="let d of dietary()" class="chip"
+                [class.active]="selectedDietary().includes(d)"
+                (click)="toggle(selectedDietary, d)"
+                attr.aria-pressed="{{ selectedDietary().includes(d) ? 'true' : 'false' }}">
+          {{ d }}
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Difficulty</h3>
+      <div class="chips">
+        <button *ngFor="let d of difficulties()" class="chip"
+                [class.active]="selectedDifficulty().includes(d)"
+                (click)="toggle(selectedDifficulty, d)"
+                attr.aria-pressed="{{ selectedDifficulty().includes(d) ? 'true' : 'false' }}">
+          {{ d }}
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Max Time (min)</h3>
+      <input class="input" type="number" min="0"
+             [value]="maxTime() ?? ''"
+             (input)="onMaxTimeInput($event)"
+             aria-label="Maximum total time in minutes" placeholder="e.g., 30" />
+    </section>
+  </div>
+</aside>

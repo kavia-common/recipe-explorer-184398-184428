@@ -1,0 +1,23 @@
+<a class="card card-link" [routerLink]="['/recipe', recipe.id]" title="Open {{ recipe.title }} details">
+  <div class="thumb">
+    <img [src]="recipe.imageUrl" [alt]="recipe.title" loading="lazy" />
+    <button class="fav"
+            attr.aria-pressed="{{ recipes.isFavorite(recipe.id) ? 'true' : 'false' }}"
+            (click)="toggleFavorite($event, recipe.id)"
+            [title]="recipes.isFavorite(recipe.id) ? 'Remove from favorites' : 'Save to favorites'">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path [attr.fill]="recipes.isFavorite(recipe.id) ? '#EF4444' : 'none'" stroke="#EF4444" stroke-width="2" d="M12 21s-7.5-4.3-9.5-8.2C.8 9.4 2.1 6 5.6 6c2 0 3.4 1.2 4.4 2.7C11 7.2 12.4 6 14.4 6c3.5 0 4.8 3.4 3.1 6.8C19.5 16.7 12 21 12 21z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="body">
+    <div class="title">{{ recipe.title }}</div>
+    <div class="desc">{{ recipe.description }}</div>
+    <div class="meta">
+      <span class="badge" title="Category">{{ recipe.category }}</span>
+      <span class="badge" title="Difficulty">{{ recipe.difficulty }}</span>
+      <span class="badge" title="Rating">★ {{ recipe.rating | number:'1.1-1' }}</span>
+      <span class="badge" title="Total time">{{ totalTime(recipe) }} min</span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,14 @@
+<div class="container app-main">
+  <app-filters-sidebar></app-filters-sidebar>
+
+  <section aria-live="polite">
+    <header class="list-header">
+      <h1>Discover Recipes</h1>
+      <p class="muted">{{ countText(recipes.filtered().length) }}</p>
+    </header>
+
+    <div class="grid">
+      <app-recipe-card *ngFor="let r of recipes.filtered()" [recipe]="r"></app-recipe-card>
+    </div>
+  </section>
+</div>
